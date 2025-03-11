@@ -13,6 +13,11 @@ const cartRoutes = require("./src/routes/cartRoutes");   // NEW
 const orderRoutes = require("./src/routes/orderRoutes"); // NEW
 const reviewRoutes = require("./src/routes/reviewRoutes")
 
+const adminOrderRoutes = require("./src/routes/adminOrderRoutes");
+const adminBookRoutes = require("./src/routes/adminBookRoutes");
+const adminUserRoutes = require("./src/routes/adminUserRoutes");
+
+
 dotenv.config();
 const app = express();
 
@@ -32,6 +37,14 @@ app.use("/api/books", bookRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/reviews", reviewRoutes);
+
+app.use("/api/admin/orders", adminOrderRoutes);
+
+app.use("/api/admin/books", adminBookRoutes);
+app.use("/uploads", express.static("uploads"));
+
+app.use("/api/admin/users", adminUserRoutes);
+
 
 app.get("/", (req, res) => {
   res.send("Welcome to ToonzKart API!");
