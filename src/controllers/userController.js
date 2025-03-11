@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Wishlist = require("../models/whishlistModel")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -63,4 +64,68 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser };
+const getWishlist = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).populate('wishlist');
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json(user.wishlist);
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error', error });
+  }
+};
+
+const addToWishlist = async (req, res) => {
+  try {
+    const { bookId } = req.body;
+    const user = await User.findById(req.user._id);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    if (!user.wishlist.includes(bookId)) {
+      user.wishlist.push(bookId);
+      await user.save();
+    }
+
+    res.json({ message: 'Book added to wishlist', wishlist: user.wishlist });
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error', error });
+  }
+};
+
+const removeFromWishlist = async (req, res) => {
+  try {
+    const { bookId } = req.params;
+    const user = await User.findById(req.user._id);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    user.wishlist = user.wishlist.filter((id) => id.toString() !== bookId);
+    await user.save();
+
+    res.json({ message: 'Book removed from wishlist', wishlist: user.wishlist });
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error', error });
+  }
+};
+
+// Clear the entire wishlist
+const clearWishlist = async (req, res) => {
+  try {
+    const userId = req.user._id;
+
+    const wishlist = await Wishlist.findOne({ user: userId });
+
+    if (!wishlist) {
+      return res.status(404).json({ message: "Wishlist not found" });
+    }
+
+    wishlist.books = []; // Empty the books array
+    await wishlist.save();
+
+    res.status(200).json({ message: "Wishlist cleared successfully", wishlist });
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error });
+  }
+};
+
+module.exports = { registerUser, loginUser, getWishlist, addToWishlist, removeFromWishlist, clearWishlist };
