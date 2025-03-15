@@ -5,7 +5,9 @@ const {
     getWishlist,
     addToWishlist,
     removeFromWishlist,
-    clearWishlist
+    clearWishlist,
+    forgotPassword,
+    resetPassword
   } = require('../controllers/userController');
 
 
@@ -17,6 +19,10 @@ router.post("/register", registerUser);
 // User Login
 router.post("/login", loginUser);
 
+//Password reset Logic
+router.post("/forgot-password", forgotPassword);
+router.post("/reset-password/:token", resetPassword);
+
 // Wishlist operations
 router.use(authenticateUser);
 
@@ -24,5 +30,6 @@ router.get('/wishlist', getWishlist);
 router.post('/wishlist', addToWishlist);
 router.delete('/wishlist/:bookId', removeFromWishlist);
 router.delete("/", authenticateUser, clearWishlist);     // Clear wishlist
+
 
 module.exports = router;
