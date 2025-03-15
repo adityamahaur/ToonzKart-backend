@@ -1,36 +1,28 @@
 # Completed Routes
 
 ## User Routes
-
-### Authentication & Profile Management
 - **`POST /register`** - Register a new user
 - **`POST /login`** - User login
+- **`POST /forgot-password`** - Send password reset link via email
+- **`POST /reset-password`** - Reset password with token
 - **`GET /profile`** - View user profile details
 - **`PUT /profile`** - Update user profile details
 - **`POST /logout`** - Log the user out securely
 - **`GET /notifications`** - Fetch notifications for the user
-
-### Wishlist Operations
 - **`GET /wishlist`** - Get user wishlist
 - **`POST /wishlist`** - Add book to wishlist
 - **`DELETE /wishlist/:bookId`** - Remove book from wishlist
 - **`DELETE /wishlist`** - Clear wishlist
 
 ## Store Routes
-
-### Store Management
 - **`POST /register`** - Register a new store
 - **`POST /login`** - Store login
 
 ## Review Routes
-
-### Book Reviews
 - **`POST /:bookId`** - Add a review for a book
 - **`GET /:bookId`** - Get all reviews for a book
 
 ## Order Routes
-
-### Order Management
 - **`POST /create`** - Create a new order
 - **`GET /:orderId`** - Get order details
 - **`GET /user/:userId`** - List all orders for a specific user
@@ -38,8 +30,6 @@
 - **`DELETE /delete/:orderId`** - Cancel an order
 
 ## Cart Routes
-
-### Cart Management
 - **`GET /`** - View the user's cart
 - **`POST /`** - Add book to cart
 - **`PUT /:itemId`** - Update cart item quantity
@@ -47,22 +37,16 @@
 - **`DELETE /`** - Clear entire cart
 
 ## Book Routes
-
-### Book Details and Listings
 - **`GET /`** - Get all books
 - **`GET /:bookId`** - Get details of a specific book
 
 ## Admin Routes
-
-### Administrative Controls
 - **`POST /register`** - Register a new admin
 - **`POST /login`** - Admin login
 
 # Routes to be Created
 
 ## User Routes
-- **`POST /forgot-password`** - Send password reset link via email
-- **`POST /reset-password`** - Reset password with token
 - **`PUT /update-password`** - Change password for authenticated users
 - **`POST /contact-support`** - Submit support inquiries
 
