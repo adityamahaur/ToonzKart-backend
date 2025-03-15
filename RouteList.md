@@ -1,4 +1,4 @@
-<span style="color:green;"># Completed Routes</span>
+# Completed Routes
 
 ## User Routes
 
@@ -58,7 +58,7 @@
 - **`POST /register`** - Register a new admin
 - **`POST /login`** - Admin login
 
-<span style="color:red;"># Routes to be Created</span>
+# Routes to be Created
 
 ## User Routes
 - **`POST /forgot-password`** - Send password reset link via email
