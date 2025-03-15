@@ -1,4 +1,4 @@
-# Completed Routes
+<span style="color:green;"># Completed Routes</span>
 
 ## User Routes
 
@@ -16,23 +16,17 @@
 - **`DELETE /wishlist/:bookId`** - Remove book from wishlist
 - **`DELETE /wishlist`** - Clear wishlist
 
----
-
 ## Store Routes
 
 ### Store Management
 - **`POST /register`** - Register a new store
 - **`POST /login`** - Store login
 
----
-
 ## Review Routes
 
 ### Book Reviews
 - **`POST /:bookId`** - Add a review for a book
 - **`GET /:bookId`** - Get all reviews for a book
-
----
 
 ## Order Routes
 
@@ -43,8 +37,6 @@
 - **`PUT /update/:orderId`** - Update order details
 - **`DELETE /delete/:orderId`** - Cancel an order
 
----
-
 ## Cart Routes
 
 ### Cart Management
@@ -54,15 +46,11 @@
 - **`DELETE /:itemId`** - Remove item from cart
 - **`DELETE /`** - Clear entire cart
 
----
-
 ## Book Routes
 
 ### Book Details and Listings
 - **`GET /`** - Get all books
 - **`GET /:bookId`** - Get details of a specific book
-
----
 
 ## Admin Routes
 
@@ -70,9 +58,7 @@
 - **`POST /register`** - Register a new admin
 - **`POST /login`** - Admin login
 
----
-
-# Routes to be Created
+<span style="color:red;"># Routes to be Created</span>
 
 ## User Routes
 - **`POST /forgot-password`** - Send password reset link via email
